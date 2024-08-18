@@ -16,4 +16,4 @@ This project is an online text editor that allows users to create memos, encrypt
 - CSS
 - JavaScript
 
-Link : Memo Sharing via URL [https://saramjh.github.io/URLmemo]
+Memo Sharing via URL(https://saramjh.github.io/URLmemo)
