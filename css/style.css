@@ -52,15 +52,12 @@ h1 {
 
 hr {
 	border: 1px solid #ccc;
+	margin: 10px 0;
 }
 
 a {
 	color: gray;
 	text-decoration: none;
-}
-
-#shareIcon {
-	font-size: 30px;
 }
 
 textarea {
@@ -126,6 +123,16 @@ button:hover {
 	color: #444;
 	text-align: center;
 	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+#iconMessage {
+	font-size: 25px;
+	font-weight: 700;
+}
+
+#modal-message {
+	padding: 10px;
+	color: #747474;
 }
 
 .close {
