@@ -34,7 +34,7 @@ document.getElementById("saveButton").onclick = function () {
 			document.getElementById("myModal").style.display = "block"
 		})
 		.catch((err) => {
-			console.error("클립보드 복사 실패:", err)
+			console.error("Clipboard Copy Failed:", err)
 		})
 }
 // 초기화 버튼 클릭 이벤트
@@ -53,8 +53,8 @@ window.onload = function () {
 			const decryptedContent = decrypt(encryptedData)
 			document.getElementById("editor").value = decryptedContent
 		} catch (error) {
-			console.error("복호화 오류:", error)
-			alert("복호화에 실패했습니다. 올바른 데이터인지 확인하세요.")
+			console.error("Decryption errors:", error)
+			alert("Decryption failed. Make sure the data is correct.")
 		}
 	}
 }
