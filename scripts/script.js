@@ -37,6 +37,11 @@ document.getElementById("saveButton").onclick = function () {
 			console.error("클립보드 복사 실패:", err)
 		})
 }
+// 초기화 버튼 클릭 이벤트
+document.getElementById("resetButton").onclick = function () {
+	document.getElementById("editor").value = "" // 에디터 내용 비우기
+	localStorage.removeItem("editorContent") // 로컬 스토리지에서 데이터 삭제
+}
 
 // 페이지 로드 시 로컬 스토리지에서 데이터 가져오기
 window.onload = function () {
