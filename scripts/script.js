@@ -37,23 +37,42 @@ document.getElementById("saveButton").onclick = function () {
 			console.error("Clipboard Copy Failed:", err)
 		})
 }
+
 // 초기화 버튼 클릭 이벤트
 document.getElementById("resetButton").onclick = function () {
 	document.getElementById("editor").value = "" // 에디터 내용 비우기
 	localStorage.removeItem("editorContent") // 로컬 스토리지에서 데이터 삭제
 }
 
-// 페이지 로드 시 로컬 스토리지에서 데이터 가져오기
+// URL 파라미터에서 데이터 가져오기
+function getUrlParameter(name) {
+	name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]")
+	const regex = new RegExp("[\\?&]" + name + "=([^&#]*)")
+	const results = regex.exec(window.location.search)
+	return results === null ? null : decodeURIComponent(results[1].replace(/\+/g, " "))
+}
+
+// 페이지 로드 시 로컬 스토리지 또는 URL 파라미터에서 데이터 가져오기
 window.onload = function () {
 	const encryptedData = localStorage.getItem("editorContent")
+	const urlData = getUrlParameter("data")
 
-	// 데이터가 있을 경우 복호화하여 에디터에 삽입
-	if (encryptedData) {
+	if (urlData) {
+		// URL 파라미터에 데이터가 있는 경우
+		try {
+			const decryptedContent = decrypt(urlData)
+			document.getElementById("editor").value = decryptedContent
+		} catch (error) {
+			console.error("Decryption error:", error)
+			alert("Decryption failed. Make sure the data is correct.")
+		}
+	} else if (encryptedData) {
+		// 로컬 스토리지에 데이터가 있는 경우
 		try {
 			const decryptedContent = decrypt(encryptedData)
 			document.getElementById("editor").value = decryptedContent
 		} catch (error) {
-			console.error("Decryption errors:", error)
+			console.error("Decryption error:", error)
 			alert("Decryption failed. Make sure the data is correct.")
 		}
 	}
